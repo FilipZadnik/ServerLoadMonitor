@@ -47,3 +47,4 @@ replay_pid*
 # Other tooling
 *.ctxt
 .mtj.tmp/
+.codex

@@ -6,6 +6,8 @@ ServerLoadMonitor je projekt pro monitorování Linux serverů z Android aplikac
 - `ServerLoadBack/` - Django REST API backend
 - `ServerAgent/` - Python agent běžící na monitorovaném serveru
 
+Git repozitář: <https://github.com/FilipZadnik/ServerLoadMonitor>
+
 ## Funkce
 
 - přihlášení a registrace uživatele,

@@ -1,34 +1,34 @@
 # ServerLoadMonitor
 
-ServerLoadMonitor je projekt pro monitorovani Linux serveru z Android aplikace. Sklada se ze tri casti:
+ServerLoadMonitor je projekt pro monitorování Linux serverů z Android aplikace. Skládá se ze tří částí:
 
-- `ServerLoadMonitoring/` - Android aplikace v Jave
+- `ServerLoadMonitoring/` - Android aplikace v Javě
 - `ServerLoadBack/` - Django REST API backend
-- `ServerAgent/` - Python agent bezici na monitorovanem serveru
+- `ServerAgent/` - Python agent běžící na monitorovaném serveru
 
 ## Funkce
 
-- prihlaseni a registrace uzivatele,
-- parovani serveru pres pairing kod nebo QR kod,
-- prehled serveru s online/offline stavem,
-- metriky CPU, RAM, disk, sit a uptime,
-- historie metrik pro grafy s volbou casoveho rozsahu,
+- přihlášení a registrace uživatele,
+- párování serveru přes pairing kód nebo QR kód,
+- přehled serverů s online/offline stavem,
+- metriky CPU, RAM, disk, síť a uptime,
+- historie metrik pro grafy s volbou časového rozsahu,
 - tabulka procesu,
 - seznam systemd services,
-- vzdaleny start/stop/enable/disable services pres agent commands,
-- nastaveni intervalu sberu dat a retence metrik,
-- Android push notifikace pres Firebase Cloud Messaging.
+- vzdálený start/stop/enable/disable services přes agent commands,
+- nastavení intervalu sběru dat a retence metrik,
+- Android push notifikace přes Firebase Cloud Messaging.
 
 ## Architektura
 
-1. Agent se pri prvnim spusteni zaregistruje na backendu.
-2. Backend agentovi vrati `server_id`, `agent_token` a pairing kod.
-3. Uzivatel server sparuje v Android aplikaci.
-4. Agent pravidelne posila metriky, procesy a services.
-5. Android aplikace cte data z backendu pres JWT autentizaci.
-6. Akce nad services se ulozi jako command v backendu a agent je postupne vykona.
+1. Agent se při prvním spuštění zaregistruje na backendu.
+2. Backend agentovi vrátí `server_id`, `agent_token` a pairing kód.
+3. Uživatel server spáruje v Android aplikaci.
+4. Agent pravidelně posílá metriky, procesy a services.
+5. Android aplikace čte data z backendu přes JWT autentizaci.
+6. Akce nad services se uloží jako command v backendu a agent je postupně vykoná.
 
-## Rychle spusteni backendu
+## Rychlé spuštění backendu
 
 ```bash
 cd ServerLoadBack
@@ -39,7 +39,7 @@ python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
-Na Linux/macOS pouzij aktivaci:
+Na Linux/macOS použij aktivaci:
 
 ```bash
 source ../.venv/bin/activate
@@ -47,7 +47,7 @@ source ../.venv/bin/activate
 
 ## Android aplikace
 
-Projekt otevri v Android Studiu ze slozky:
+Projekt otevři v Android Studiu ze složky:
 
 ```text
 ServerLoadMonitoring/
@@ -59,17 +59,17 @@ Adresa backendu je v:
 ServerLoadMonitoring/app/src/main/java/com/example/serverloadmonitoring/ApiConfig.java
 ```
 
-Pro Android emulator pouzij typicky:
+Pro Android emulátor použij typicky:
 
 ```java
 public static final String BASE_URL = "http://10.0.2.2:8000";
 ```
 
-Pro realne zarizeni nastav IP adresu pocitace/serveru v siti.
+Pro reálné zařízení nastav IP adresu počítače/serveru v síti.
 
 ## Agent
 
-Na monitorovanem Linux serveru:
+Na monitorovaném Linux serveru:
 
 ```bash
 cd ServerAgent
@@ -78,14 +78,14 @@ python3 setup.py
 
 Setup:
 
-- nainstaluje Python balicky z `requirements.txt`,
+- nainstaluje Python balíčky z `requirements.txt`,
 - zaregistruje server na backendu,
-- zobrazi pairing kod a QR kod,
-- pocka na sparovani v Android aplikaci,
-- vytvori systemd service `server-monitoring-agent`,
-- spusti agenta jako `root`, aby mohl ovladat systemd services.
+- zobrazí pairing kód a QR kód,
+- počká na spárování v Android aplikaci,
+- vytvoří systemd service `server-monitoring-agent`,
+- spustí agenta jako `root`, aby mohl ovládat systemd services.
 
-Kontrola sluzby:
+Kontrola služby:
 
 ```bash
 sudo systemctl status server-monitoring-agent
@@ -94,35 +94,18 @@ journalctl -u server-monitoring-agent -n 100 --no-pager
 
 ## Firebase / push notifikace
 
-Pro push notifikace je potreba Firebase Admin service account JSON na backendu a `google-services.json` v Android aplikaci.
+Pro push notifikace je potřeba Firebase Admin service account JSON na backendu a `google-services.json` v Android aplikaci.
 
-Tyto soubory se nesmi commitovat:
+Tyto soubory se nesmí commitovat:
 
 - `firebase-service-account.json`
 - `google-services.json`
 
-Jsou ignorovane v `.gitignore`.
+Jsou ignorované v `.gitignore`.
 
-## Git
+## Další dokumentace
 
-Pred commitem over, ze citlive JSON soubory nejsou staged:
-
-```bash
-git check-ignore -v firebase-service-account.json ServerLoadMonitoring/app/google-services.json
-git status --short
-```
-
-Zakladni push:
-
-```bash
-git add .
-git commit -m "Update project"
-git push
-```
-
-## Dalsi dokumentace
-
-Detailnejsi informace jsou ve slozkach:
+Detailnější informace jsou ve složkách:
 
 - `ServerLoadBack/README.md`
 - `ServerAgent/README.md`

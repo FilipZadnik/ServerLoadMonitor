@@ -1,0 +1,28 @@
+# Secrets / Firebase
+firebase-service-account.json
+google-services.json
+**/firebase-service-account.json
+**/google-services.json
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Django/local config
+.env
+*.env
+
+# Android / Gradle
+.gradle/
+build/
+**/build/
+local.properties
+*.iml
+.idea/
+
+# OS/editor
+.DS_Store
+.vscode/

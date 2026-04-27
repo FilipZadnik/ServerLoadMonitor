@@ -1,0 +1,61 @@
+from django.urls import path
+from rest_framework_simplejwt.views import TokenRefreshView
+
+from .views import (
+    AgentCommandsView,
+    AgentRegisterView,
+    AgentServerSettingsView,
+    AndroidPushTokenView,
+    CommandResultView,
+    LoginView,
+    MetricsIngestView,
+    PairServerView,
+    ProcessesIngestView,
+    ReorderServersView,
+    RegisterView,
+    ServerOverviewView,
+    ServerProcessesView,
+    ServerCommandsView,
+    ServerCommandStatusView,
+    ServerSettingsView,
+    ServerServicesView,
+    ServicesIngestView,
+    UserSettingsView,
+    UserServersView,
+)
+
+urlpatterns = [
+    path("api/auth/register/", RegisterView.as_view(), name="auth-register"),
+    path("api/auth/login/", LoginView.as_view(), name="auth-login"),
+    path("api/auth/refresh/", TokenRefreshView.as_view(), name="auth-refresh"),
+    path("api/users/settings/", UserSettingsView.as_view(), name="user-settings"),
+    path("api/users/push-token/", AndroidPushTokenView.as_view(), name="user-push-token"),
+    path("api/servers/", UserServersView.as_view(), name="servers-list"),
+    path("api/servers/reorder/", ReorderServersView.as_view(), name="servers-reorder"),
+    path("api/servers/<int:server_id>/overview/", ServerOverviewView.as_view(), name="server-overview"),
+    path("api/servers/<int:server_id>/processes/", ServerProcessesView.as_view(), name="server-processes"),
+    path("api/servers/<int:server_id>/services/", ServerServicesView.as_view(), name="server-services"),
+    path("api/servers/<int:server_id>/commands/", ServerCommandsView.as_view(), name="server-commands"),
+    path(
+        "api/servers/<int:server_id>/commands/<int:command_id>/",
+        ServerCommandStatusView.as_view(),
+        name="server-command-status",
+    ),
+    path("api/servers/<int:server_id>/settings/", ServerSettingsView.as_view(), name="server-settings"),
+    path("api/servers/pair/", PairServerView.as_view(), name="server-pair"),
+    path("api/agent/register/", AgentRegisterView.as_view(), name="agent-register"),
+    path("metrics/", MetricsIngestView.as_view(), name="metrics-ingest"),
+    path("processes/", ProcessesIngestView.as_view(), name="processes-ingest"),
+    path("services/", ServicesIngestView.as_view(), name="services-ingest"),
+    path(
+        "api/agent/<int:server_id>/settings/",
+        AgentServerSettingsView.as_view(),
+        name="agent-server-settings",
+    ),
+    path("api/agent/<int:server_id>/commands/", AgentCommandsView.as_view(), name="agent-commands"),
+    path(
+        "api/agent/<int:server_id>/commands/<int:command_id>/result/",
+        CommandResultView.as_view(),
+        name="agent-command-result",
+    ),
+]

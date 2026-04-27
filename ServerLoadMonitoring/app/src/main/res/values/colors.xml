@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="auth_background_start">#050B1D</color>
+    <color name="auth_background_end">#010612</color>
+    <color name="auth_glow">#203C96FF</color>
+
+    <color name="auth_text_primary">#F2F6FF</color>
+    <color name="auth_text_secondary">#A5B3D2</color>
+    <color name="auth_text_hint">#8695BA</color>
+    <color name="auth_icon_tint">#A6B8E2</color>
+
+    <color name="auth_input_bg">#CC1A2947</color>
+    <color name="auth_accent">#1C69F2</color>
+    <color name="auth_accent_light">#2E88FF</color>
+
+    <color name="server_card_bg">#B217243D</color>
+    <color name="server_card_stroke">#2A4D6B9A</color>
+    <color name="server_status_online_text">#5AE18D</color>
+    <color name="server_status_offline_text">#FF5A5A</color>
+</resources>

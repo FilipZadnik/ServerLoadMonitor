@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ServiceRowStyle">
+        <item name="android:baselineAligned">false</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">42dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="ServiceNameStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/auth_text_primary</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="ServiceStatusRunningStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/server_status_online_text</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="ServiceStatusStoppedStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/server_status_offline_text</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="ServiceSwitchStyle" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:showText">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:scaleX">0.86</item>
+        <item name="android:scaleY">0.86</item>
+        <item name="thumbTint">@color/auth_text_primary</item>
+        <item name="trackTint">@color/auth_accent_light</item>
+    </style>
+
+    <style name="ServiceActionsCellStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+
+    <style name="ServiceActionButtonStyle">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@drawable/bg_service_action_button</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="tint">@color/auth_text_hint</item>
+    </style>
+</resources>
